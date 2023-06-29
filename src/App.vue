@@ -8,6 +8,7 @@
 					текст ниже как можно быстрее для того, чтобы узнать свою скорость
 					печати.
 				</p>
+				<button class="replace-text-button" @click="replaceText">Заменить текст</button>
 				<div class="typing-area">
 					<p>{{ apiText }}</p>
 					<textarea
@@ -118,8 +119,24 @@ export default {
 		removeErrorClass() { //удаляет класс ошибки
 			this.hasError = false;
 		},
+		replaceText() {
+			axios
+			.get('https://fish-text.ru/get')
+			.then((response) => {
+				this.apiText = response.data.text;
+				this.typedText = ''; // Сброс введенного текста
+				this.startTime = null; // Сброс времени
+				this.timer = '00:00'; // Сброс таймера
+				this.typingSpeed = 0; // Сброс скорости
+				this.symbolsNum = 0; // Сброс количества символов
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+		},
 	},
 	mounted() {
+
 		axios
 			.get('https://fish-text.ru/get')
 			.then((response) => {
@@ -128,6 +145,7 @@ export default {
 			.catch((error) => {
 				console.error(error);
 			});
+
 	}
 };
 </script>
@@ -153,6 +171,24 @@ body {
 	background: #111;
 	content: "";
 }
+
+
+.replace-text-button {
+	background-color: #4f4f4f;
+	color: white;
+	padding: 10px 20px;
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	margin-bottom: 10px;
+	transition: background-color 0.3s ease;
+	width: 200px;
+	margin: 0 auto;
+	&:hover {
+		background-color: #5f5f5f;
+	}
+}
+
 
 .speed-test {
 	padding: 20px;

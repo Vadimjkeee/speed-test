@@ -138,7 +138,7 @@ export default {
 	mounted() {
 
 		axios
-			.get('https://fish-text.ru/get')
+			.get('https://fish-text.ru/get')  // при обращении к forismatic.com возникает ограничение по cors
 			.then((response) => {
 				this.apiText = response.data.text;
 			})

@@ -2,7 +2,6 @@
 	<div class="speed-test">
 		<div class="container">
 			<div class="speed-test-wrapper">
-				<a href="https://vadimjkeee.github.io/artSpace/">artspace</a>
 				<h1 class="speed-test__title">Тест скорости набора текста</h1>
 				<p>
 					Как только вы начнете писать в поле ввода пойдет время. Задача написать

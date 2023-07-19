@@ -129,6 +129,7 @@ export default {
 				this.timer = '00:00'; // Сброс таймера
 				this.typingSpeed = 0; // Сброс скорости
 				this.symbolsNum = 0; // Сброс количества символов
+				clearInterval(this.timerInterval);
 			})
 			.catch((error) => {
 				console.error(error);
